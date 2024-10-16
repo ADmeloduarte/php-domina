@@ -18,3 +18,21 @@ foreach ($similar_user as $user_id) {
     }
 }
 $recommendations = array_unique($recommendations); // eliminamos duplicidades
+?>
+
+<?php
+// Primero obtenemos una lista de tosos los prductos y los usuarios que los han interactuado
+$products - get_products();
+$user_interations = get_user_interactions();
+
+// Luego creamos una matriz de similitud entre los productos
+$similarity_matrix = calculate_similatiry_matrix($products, $user_interactions);
+
+// Our ultimo, podemos hacer recomendaciones para un usuario especifico
+$recommendations = get_recommendations_for_user($user_id, $products, $similarity_matrix);
+
+// Mostramos las recomendaciones al usuario
+foreach($recommendations as $product) {
+    echo "Le recomendamos el producto: " . $product['name'];
+}
+?>
